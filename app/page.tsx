@@ -6,7 +6,7 @@ import { doLogin, isRegistered } from "@/services/Web3Services"
 import { useState, useEffect } from "react"
 import AnimatedBackground from "@/components/AnimatedBackground"
 import RegisterModal from "@/components/RegisterModal"
-import { FaFilePdf } from "react-icons/fa"
+{/*import { FaFilePdf } from "react-icons/fa"*/}
 import { Loader2, Zap, LogIn, CheckCircle } from "lucide-react" // Novos ícones
 import { motion } from "framer-motion";
 
