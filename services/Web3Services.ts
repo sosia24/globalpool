@@ -3946,7 +3946,7 @@ export async function buyMpoolCash(quantity: number) {
     signer
   );
 
-  const tx = await fee.addPosition(quantity, { value: ethers.parseEther("1") });
+  const tx = await fee.addPosition(quantity);
   await tx.wait();
 
   return tx;
