@@ -133,7 +133,7 @@ export default function Home() {
                     <h3 className="text-lg font-extrabold text-fuchsia-400 uppercase tracking-widest mb-4">
                         Presentations
                     </h3>
-                    <div className="flex flex-col space-y-3 w-full">
+                    <div className="flex flex-col space-y-3 w-full mb-[50px]">
                         
                         {/* Cartão 1: Português (Fúcsia) */}
                         <a
