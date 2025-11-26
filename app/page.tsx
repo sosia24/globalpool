@@ -129,13 +129,14 @@ export default function Home() {
 
                 
                 {/* SEÇÃO DE DOWNLOADS DOS PDFs */}
+                {/* 
                 <div className="mt-10 pt-6 border-t border-gray-700/50 w-full">
                     <h3 className="text-lg font-extrabold text-fuchsia-400 uppercase tracking-widest mb-4">
                         Presentations
                     </h3>
                     <div className="flex flex-col space-y-3 w-full mb-[50px]">
                         
-                        {/* Cartão 1: Português (Fúcsia) */}
+                       
                         <a
                             href="/Pool Cash Portuguese.pdf"
                             download
@@ -149,7 +150,7 @@ export default function Home() {
                             <FaFilePdf className="text-fuchsia-400 text-2xl drop-shadow-[0_0_5px_#d83cff]" />
                         </a>
 
-                        {/* Cartão 2: Spanish (Verde/Ciano) */}
+                       
                         <a
                             href="/Pool Cash Spanish.pdf"
                             download
@@ -163,7 +164,7 @@ export default function Home() {
                             <FaFilePdf className="text-green-400 text-2xl drop-shadow-[0_0_5px_#00ff75]" />
                         </a>
 
-                        {/* Cartão 3: English (Amarelo) */}
+                       
                         <a
                             href="/Pool Cash English.pdf"
                             download
@@ -178,8 +179,9 @@ export default function Home() {
                         </a>
 
                     </div>
+                    
                 </div>
-
+                */}
             </motion.div>
         </div>
     )
