@@ -72,7 +72,7 @@ function Particles() {
     particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
     particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
 
-    useFrame(({ clock }) => {
+    useFrame(({ }) => {
         if (points.current) {
             // Rotação sutil e contínua
             points.current.rotation.y += 0.0004
