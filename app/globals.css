@@ -1,0 +1,251 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+.bg-overlay::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 205, 0, 0.14); /* Amarelo com transparência */
+  border-radius: 50%;
+  transform: translate(-50%, -80%);
+  filter: blur(100px);
+  z-index: 0;
+}
+
+@media (min-width: 600px) {
+  .bg-overlay::before {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .bg-overlay::before {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes drawBorder {
+  0% {
+    border-left: 0 solid #ff6347;
+    border-top: 0 solid #ff6347;
+    border-right: 0 solid #ff6347;
+    border-bottom: 0 solid #ff6347;
+  }
+  100% {
+    border-left: 4px solid #ff6347;
+    border-top: 4px solid #ff6347;
+    border-right: 4px solid #ff6347;
+    border-bottom: 4px solid #ff6347;
+  }
+}
+
+/* Scrollbar customizada */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: black;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #facc15; /* yellow-400 */
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+/* === EFEITO MELHORADO DA ÁGUA === */
+
+.pool-container-waves {
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(0, 0, 0, 0.05));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.pool-background-dark {
+  position: absolute;
+  inset: 0;
+  background-color: #0d121c;
+  z-index: 1;
+}
+
+.pool-liquid-waves {
+  position: relative;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  z-index: 2;
+  background: linear-gradient(to top, rgba(0, 255, 255, 0.9), rgba(0, 180, 255, 0.9), rgba(0, 255, 255, 0.6));
+  box-shadow: inset 0 -15px 25px rgba(0, 255, 255, 0.5), inset 0 5px 20px rgba(255, 255, 255, 0.3);
+  transition: height 1.5s ease-in-out;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  transition: clip-path 1.5s ease-in-out;
+  /* Use a CSS variable to control the vertical position of the clip-path */
+  clip-path: polygon(
+    0% var(--liquid-level),
+    20% calc(var(--liquid-level) - 2%),
+    40% var(--liquid-level),
+    60% calc(var(--liquid-level) - 2%),
+    80% var(--liquid-level),
+    100% calc(var(--liquid-level) - 2%),
+    100% 100%,
+    0% 100%
+  );
+
+}
+
+/* Ondas em movimento */
+.pool-liquid-waves::before,
+.pool-liquid-waves::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.25) 20%, rgba(255, 255, 255, 0.05) 60%, transparent 80%),
+              linear-gradient(to top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0.8;
+  border-radius: 45%;
+  animation: waveMotion 6s linear infinite;
+}
+
+.pool-liquid-waves::after {
+  top: -10%;
+  opacity: 0.5;
+  animation: waveMotionReverse 8s linear infinite;
+}
+
+@keyframes waveMotion {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  50% { transform: translateX(-25%) translateY(5%) rotate(1deg); }
+  100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+}
+
+@keyframes waveMotionReverse {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  50% { transform: translateX(25%) translateY(-3%) rotate(-1deg); }
+  100% { transform: translateX(50%) translateY(0) rotate(0deg); }
+}
+
+/* Efeito de brilho ao completar */
+@keyframes pulseGlow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.4); }
+}
+
+.pool-container-waves.full .pool-liquid-waves {
+  animation: pulseGlow 2s ease-in-out infinite alternate;
+}
+
+/* Bolhas subindo */
+.bubbles {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -10px;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: bubbleRise 6s linear infinite;
+}
+
+.bubble:nth-child(odd) {
+  width: 4px;
+  height: 4px;
+  animation-duration: 5s;
+  opacity: 0.5;
+}
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  80% {
+    transform: translateY(-90%) scale(1.2);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Distribui bolhas aleatoriamente */
+.bubble:nth-child(1) { left: 10%; animation-delay: 0s; }
+.bubble:nth-child(2) { left: 25%; animation-delay: 1s; }
+.bubble:nth-child(3) { left: 40%; animation-delay: 2s; }
+.bubble:nth-child(4) { left: 55%; animation-delay: 3s; }
+.bubble:nth-child(5) { left: 70%; animation-delay: 4s; }
+.bubble:nth-child(6) { left: 85%; animation-delay: 5s; }
+.bubble:nth-child(7) { left: 15%; animation-delay: 1.5s; }
+.bubble:nth-child(8) { left: 35%; animation-delay: 2.5s; }
+.bubble:nth-child(9) { left: 60%; animation-delay: 3.5s; }
+.bubble:nth-child(10) { left: 80%; animation-delay: 4.5s; }
+
+/* Overlay */
+.pool-overlay-effects {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  background: linear-gradient(45deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.0) 30%,
+    rgba(255, 255, 255, 0.0) 70%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  opacity: 0.8;
+  mix-blend-mode: screen;
+}
+
+
+
+
