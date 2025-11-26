@@ -19,7 +19,7 @@ import {
 import { useWallet } from "@/services/walletContext";
 const contractAddress = process.env.NEXT_PUBLIC_MPOOLCASH_ADDRESS || ""; 
 import AnimatedBackground from "@/components/AnimatedBackground"; // Mantido
-import { ExternalLink, Loader2, DollarSign, Zap, TrendingUp, Users, ShoppingCart, Rocket, Star, Hash, ArrowRight, RefreshCcw, HandCoins } from "lucide-react"; // Ícones atualizados
+import { ExternalLink, Loader2, DollarSign, Users, ShoppingCart, Rocket, Hash, RefreshCcw, HandCoins } from "lucide-react"; // Ícones atualizados
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/components/LanguageManager";
 import Decimal from "decimal.js";
@@ -157,6 +157,8 @@ const [sponsor, setSponsor] = useState<string | null>(null);
                 console.log("finis")
             }
         };
+
+        getUserSponsor();
 
         loadData();
     }, [address]);
