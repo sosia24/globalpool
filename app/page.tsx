@@ -145,7 +145,7 @@ export default function Home() {
                                        hover:border-fuchsia-400 hover:shadow-[0_0_15px_rgba(216,60,255,0.4)]"
                         >
                             <span className="text-lg font-semibold text-gray-100">
-                                Português (PT)
+                                Portuguese (PT)
                             </span>
                             <FaFilePdf className="text-fuchsia-400 text-2xl drop-shadow-[0_0_5px_#d83cff]" />
                         </a>

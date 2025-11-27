@@ -2,8 +2,9 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiBarChart2 } from 'react-icons/fi';
 import { EligibilityTable } from "@/components/EligibilityTable";
+import { FiBarChart2, FiMenu, FiX } from 'react-icons/fi';
+import { FaTelegramPlane } from "react-icons/fa";
 import {
     getUserTickIds,
     getTickDatas,
@@ -93,6 +94,10 @@ export default function App() {
     const [loadingClaim, setLoadingClaim] = useState(false);
     const [loadingReinvest, setLoadingReinvest] = useState(false);
     const [message, setMessage] = useState("");
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    
+    // Função para alternar o estado do menu
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     const [modal, setModal] = useState<ModalState>({
         isOpen: false,
@@ -362,6 +367,7 @@ const [sponsor, setSponsor] = useState<string | null>(null);
     const totalCost = ((parseInt(inputValue || "0", 10) || 0) * shareValue).toFixed(2);
 
  const COINGECKO_URL = "https://www.coingecko.com/en/coins/mpool?utm_source=geckoterminal&utm_medium=referral&utm_campaign=badge&asset_platform_api_symbol=polygon-pos";
+ const GROUP_URL = "https://t.me/+6QIcaccZDpA4Mjc0";
     // === COMPONENTE PRINCIPAL DO LAYOUT ===
     return (
         <div className="relative min-h-screen w-full bg-black text-white overflow-x-hidden font-sans">
@@ -372,54 +378,121 @@ const [sponsor, setSponsor] = useState<string | null>(null);
             </div>
 
             {/* Header */}
-            <header className="relative z-20 flex items-center justify-between px-4 sm:px-6 py-4 max-w-[1400px] mx-auto border-b border-gray-800/50">
-                {/* LOGO E TÍTULO */}
-                <div className="flex items-center gap-2 sm:gap-4">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-2 bg-gradient-to-br from-fuchsia-600/40 to-green-600/40 flex items-center justify-center ring-2 ring-fuchsia-400/40 shadow-[0_0_20px_#d83cff]">
-                        <Image src="/Global-Pool.svg" className="mt-[4px]" alt="logo" width={44} height={44} />
-                    </div>
-                    <div>
-                        <h1 className="text-2xl sm:text-3xl font-extrabold bg-clip-text text-white">
-                            GLOBAL<span className="text-purple-600">POOL</span>
-                        </h1>
-                        <p className="text-xs text-gray-400 hidden sm:block">THE FUTURE IS HERE</p>
-                    </div>
+<header className="relative z-20 flex items-center justify-between px-4 sm:px-6 py-4 max-w-[1400px] mx-auto border-b border-gray-800/50">
+            {/* LOGO E TÍTULO: (Sempre visível) */}
+            <div className="flex items-center gap-2 sm:gap-4">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-2 bg-gradient-to-br from-fuchsia-600/40 to-green-600/40 flex items-center justify-center ring-2 ring-fuchsia-400/40 shadow-[0_0_20px_#d83cff]">
+                    {/* Substitua por seu componente real de imagem */}
+                    <Image src="/Global-Pool.svg" className="mt-[4px]" alt="logo" width={44} height={44} /> 
                 </div>
+                <div>
+                    <h1 className="text-2xl sm:text-3xl font-extrabold bg-clip-text text-white">
+                        GLOBAL<span className="text-purple-600">POOL</span>
+                    </h1>
+                    <p className="text-xs text-gray-400 hidden sm:block">THE FUTURE IS HERE</p>
+                </div>
+            </div>
 
- {/* 📈 LINK PARA COINGECKO (NOVO) */}
-            <a
-                href={COINGECKO_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden lg:flex items-center gap-2 px-3 py-2 
-                           bg-gray-800 rounded-lg border border-green-700/50 
-                           text-green-400 font-semibold text-sm 
-                           hover:bg-green-600 hover:text-black hover:border-green-600 
-                           transition-all duration-300 shadow-md hover:shadow-green-500/30"
-            >
-                <FiBarChart2 className="w-4 h-4" />
-                MPool (CoinGecko)
-            </a>
-            {/* Fim do Link CoinGecko */}
-                {/* CONEXÃO / HOME */}
-                <div className="flex items-center gap-3">
-                    <button onClick={() => router.push("/")} className="text-sm cursor-pointer text-gray-400 hover:text-fuchsia-400 transition-colors hidden sm:block">
-                        Home
-                    </button>
-                    {address ? (
-                        <div className="px-3 py-2 rounded-lg bg-gray-800/70 border border-fuchsia-700/30 transition-shadow hover:shadow-[0_0_10px_rgba(216,60,255,0.3)] cursor-pointer" onClick={switchAccount}>
-                            <div className="text-xs text-gray-400 hidden sm:block">Connected as</div>
-                            <div className="text-sm text-fuchsia-400 font-mono">
-                                {address.slice(0, 4)}...{address.slice(-4)}
-                            </div>
+            {/* ITENS DE NAVEGAÇÃO - DESKTOP (Visível apenas em telas grandes - lg) */}
+            <div className="hidden lg:flex items-center gap-3">
+                {/* 📈 LINK PARA COINGECKO */}
+                <a
+                    href={COINGECKO_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-3 py-2 
+                               bg-gray-800 rounded-lg border border-purple-700/50 
+                               text-purple-400 font-semibold text-sm 
+                               hover:bg-purple-600 hover:text-black hover:border-purple-600 
+                               transition-all duration-300 shadow-md hover:shadow-purple-500/30"
+                >
+                    <FiBarChart2 className="w-4 h-4" />
+                    MPool (CoinGecko)
+                </a>
+                
+                {/* 💬 LINK PARA WHATSAPP */}
+                <a
+                    href={GROUP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 px-3 py-2 
+                               bg-gray-800 rounded-lg border border-purple-700/50 
+                               text-purple-400 font-semibold text-sm 
+                               hover:bg-purple-600 hover:text-black hover:border-purple-600 
+                               transition-all duration-300 shadow-md hover:shadow-purple-500/30"
+                >
+                    <FaTelegramPlane className="w-4 h-4" />
+                    Group (Telegram)
+                </a>
+                
+                {/* 🏠 LINK HOME */}
+                <button onClick={() => router.push("/")} className="text-sm cursor-pointer text-gray-400 hover:text-fuchsia-400 transition-colors">
+                    Home
+                </button>
+            </div>
+
+
+            {/* CONEXÃO / BOTÃO DE MENU (Sempre visíveis, mas o menu é só no mobile) */}
+            <div className="flex items-center gap-3">
+                {address ? (
+                    // 🔒 Endereço Conectado (Visível sempre)
+                    <div className="px-3 py-2 rounded-lg bg-gray-800/70 border border-fuchsia-700/30 transition-shadow hover:shadow-[0_0_10px_rgba(216,60,255,0.3)] cursor-pointer" onClick={switchAccount}>
+                        <div className="text-xs text-gray-400 hidden sm:block">Connected as</div>
+                        <div className="text-sm text-fuchsia-400 font-mono">
+                            {address.slice(0, 4)}...{address.slice(-4)}
                         </div>
-                    ) : (
-                        <button onClick={() => { /* Lógica de Conexão */ }} className={`px-4 py-2 rounded-lg font-semibold transition-colors ${neonPurpleButton}`}>
-                            Connect Wallet
-                        </button>
-                    )}
-                </div>
-            </header>
+                    </div>
+                ) : (
+                    // 🔗 Botão Conectar (Visível sempre)
+                    <button onClick={() => { /* Lógica de Conexão */ }} className={`px-4 py-2 rounded-lg font-semibold transition-colors ${neonPurpleButton}`}>
+                        Connect Wallet
+                    </button>
+                )}
+                
+                {/* BOTÃO DE MENU HAMBURGER: (Visível SOMENTE no Mobile/Tablet - lg:hidden) */}
+                <button 
+                    onClick={toggleMenu}
+                    className="p-2 rounded-lg cursor-pointer bg-gray-800/70 border border-fuchsia-700/30 lg:hidden text-fuchsia-400 hover:bg-fuchsia-400 hover:text-black transition-colors"
+                    aria-label="Toggle Menu"
+                >
+                    {isMenuOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+                </button>
+            </div>
+
+            {/* 🍔 MENU COLAPSÁVEL PARA MOBILE/TABLET (Aparece abaixo do Header) */}
+            <div 
+                className={`${isMenuOpen ? 'flex' : 'hidden'} lg:hidden absolute top-full left-0 w-full flex-col bg-gray-900 border-b border-gray-800/50 shadow-lg`}
+            >
+                {/* 🏠 LINK HOME - Mobile */}
+                <button onClick={() => { router.push("/"); toggleMenu(); }} className="w-full text-left px-4 py-3 text-sm cursor-pointer text-gray-300 hover:bg-gray-700 hover:text-fuchsia-400 transition-colors">
+                    Home
+                </button>
+
+                {/* 📈 LINK PARA COINGECKO - Mobile */}
+                <a
+                    href={COINGECKO_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={toggleMenu}
+                    className="flex items-center gap-2 px-4 py-3 text-sm text-purple-400 hover:bg-gray-700 transition-colors"
+                >
+                    <FiBarChart2 className="w-4 h-4" />
+                    MPool (CoinGecko)
+                </a>
+                
+                {/* 💬 LINK PARA WHATSAPP - Mobile */}
+                <a
+                    href={GROUP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={toggleMenu}
+                    className="flex items-center gap-2 px-4 py-3 text-sm text-purple-400 hover:bg-gray-700 transition-colors"
+                >
+                    <FaTelegramPlane className="w-4 h-4" />
+                    Group (Telegram)
+                </a>
+            </div>
+        </header>
             
             {/* Hero Section - Dashboard Overview & Buy Action */}
             <section className="relative z-10 py-12 sm:py-16 max-w-[1400px] mx-auto px-4 sm:px-6">
