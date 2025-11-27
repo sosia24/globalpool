@@ -6,7 +6,7 @@ import { doLogin, isRegistered } from "@/services/Web3Services"
 import { useState, useEffect } from "react"
 import AnimatedBackground from "@/components/AnimatedBackground"
 import RegisterModal from "@/components/RegisterModal"
-{/*import { FaFilePdf } from "react-icons/fa"*/}
+import { FaFilePdf } from "react-icons/fa"
 import { Loader2, Zap, LogIn, CheckCircle } from "lucide-react" // Novos ícones
 import { motion } from "framer-motion";
 
@@ -129,7 +129,7 @@ export default function Home() {
 
                 
                 {/* SEÇÃO DE DOWNLOADS DOS PDFs */}
-                {/* 
+                
                 <div className="mt-10 pt-6 border-t border-gray-700/50 w-full">
                     <h3 className="text-lg font-extrabold text-fuchsia-400 uppercase tracking-widest mb-4">
                         Presentations
@@ -138,7 +138,7 @@ export default function Home() {
                         
                        
                         <a
-                            href="/Pool Cash Portuguese.pdf"
+                            href="/Global Pool Portuguese.pdf"
                             download
                             className="flex items-center justify-between p-4 bg-gray-800/70 rounded-xl cursor-pointer
                                        transition-all duration-300 border border-gray-700/50
@@ -152,7 +152,7 @@ export default function Home() {
 
                        
                         <a
-                            href="/Pool Cash Spanish.pdf"
+                            href="/Global Pool  Spanish.pdf"
                             download
                             className="flex items-center justify-between p-4 bg-gray-800/70 rounded-xl cursor-pointer
                                        transition-all duration-300 border border-gray-700/50
@@ -166,7 +166,7 @@ export default function Home() {
 
                        
                         <a
-                            href="/Pool Cash English.pdf"
+                            href="/Global Pool English.pdf"
                             download
                             className="flex items-center justify-between p-4 bg-gray-800/70 rounded-xl cursor-pointer
                                        transition-all duration-300 border border-gray-700/50
@@ -178,10 +178,23 @@ export default function Home() {
                             <FaFilePdf className="text-yellow-400 text-2xl drop-shadow-[0_0_5px_#ffeb3b]" />
                         </a>
 
+                        <a
+                            href="/Global Pool Polish.pdf"
+                            download
+                            className="flex items-center justify-between p-4 bg-gray-800/70 rounded-xl cursor-pointer
+                                       transition-all duration-300 border border-gray-700/50
+                                       hover:border-red-400 hover:shadow-[0_0_15px_rgba(255,255,0,0.4)]" 
+                        >
+                            <span className="text-lg font-semibold text-gray-100">
+                                Polish (PL)
+                            </span>
+                            <FaFilePdf className="text-red-400 text-2xl drop-shadow-[0_0_5px_#ffeb3b]" />
+                        </a>
+
                     </div>
                     
                 </div>
-                */}
+               
             </motion.div>
         </div>
     )
