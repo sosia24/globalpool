@@ -436,16 +436,17 @@ const [sponsor, setSponsor] = useState<string | null>(null);
                         
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div className="p-5 bg-gray-800/70 rounded-xl border border-fuchsia-800/50 flex items-center justify-center sm:justify-start gap-4 shadow-inner">
-                                <Users className="w-8 h-8 text-fuchsia-400" />
+                                
+                                <DollarSign className="w-8 h-8 text-green-400" />
                                 <div>
                                     <div className="text-sm text-gray-400">Total Value Locked</div>
                                     <div className="text-2xl font-bold text-yellow-300">${poolMetrics.totalValueLocked.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
                                 </div>
                             </div>
                             <div className="p-5 bg-gray-800/70 rounded-xl border border-green-800/50 flex items-center justify-center sm:justify-start gap-4 shadow-inner">
-                                <DollarSign className="w-8 h-8 text-green-400" />
+                                <Users className="w-8 h-8 text-fuchsia-400" />
                                 <div>
-                                    <div className="text-sm text-gray-400">Your Shares</div>
+                                    <div className="text-sm text-gray-400">Total Shares</div>
                                     <div className="text-2xl font-bold text-green-400">{sharesBought}</div>
                                 </div>
                             </div>
@@ -484,7 +485,7 @@ const [sponsor, setSponsor] = useState<string | null>(null);
                                 <button
                                     onClick={handleApprove}
                                     disabled={loading || parseInt(inputValue || "0", 10) < 1 || !address}
-                                    className={`w-full py-4 rounded-lg font-extrabold text-lg transition-all duration-300 ${loading || parseInt(inputValue || "0", 10) < 1 || !address ? disabledStyle : neonGreenButton}`}
+                                    className={`w-full py-4 cursor-pointer rounded-lg font-extrabold text-lg transition-all duration-300 ${loading || parseInt(inputValue || "0", 10) < 1 || !address ? disabledStyle : neonGreenButton}`}
                                 >
                                     {address ? (loading ? <Loader2 className="animate-spin w-5 h-5 inline mr-2" /> : "Approve & Buy Shares") : "Connect Wallet"}
                                 </button>
