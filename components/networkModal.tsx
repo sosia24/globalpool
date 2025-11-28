@@ -132,8 +132,6 @@ const ReferralTree: React.FC<ReferralTreeProps> = ({ address }) => {
   const addAffiliates = (count: number) => {
     setQuantity((prev) => prev + count);
   };
-
-  useEffect(() => {
     async function loadInitialTree() {
       if (!address) return;
 
@@ -147,6 +145,8 @@ const ReferralTree: React.FC<ReferralTreeProps> = ({ address }) => {
         console.error(error);
       }
     }
+  useEffect(() => {
+
 
     loadInitialTree();
   }, [address]);

@@ -2593,15 +2593,16 @@ export async function wethgetTransactionsReceivedGas(
   fromBlock: number,
   toBlock: number
 ) {
+  console.log("chamou aqui");
   try {
     const provider = new ethers.JsonRpcProvider(RPC_PADRAO_EXTRATOS);
     const contract = new ethers.Contract(
-      "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
-      usdcAbi,
+      "0xc2132D05D31c914a87C6611C10748AEb04B58e8F", /* TOKEN QUE QUERO MONITORAR (USDT)*/
+      usdtAbi,
       provider
     );
 
-    const from = "0x84704fD155b99Dd3c17C7f21aa1D0b27F3eb4344";
+    const from = "0xC1894BC0e11a332F6217BC199ab3871C53712e1e"; /* CONTRRATO DE ONDE RECEBE (MPOOL CASH) */
     const to = owner;
 
     const filter = contract.filters.Transfer(from, to);
@@ -2619,7 +2620,7 @@ export async function wethgetTransactionsReceivedGas(
         transactionHash: event.transactionHash,
         value: ethers.formatUnits(event.data, 6),
       }));
-
+      console.log("retornouy isso:", result);
     return result;
   } catch (error) {
     console.error("Error fetching events:", error);
@@ -4230,3 +4231,4 @@ export async function claimSellOrderFront(tickId:number) {
 
   return tx;
 }
+

@@ -76,7 +76,7 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: black;
+
   border-radius: 10px;
 }
 

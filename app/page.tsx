@@ -136,35 +136,6 @@ export default function Home() {
                     </h3>
                     <div className="flex flex-col space-y-3 w-full mb-[50px]">
                         
-                       
-                        <a
-                            href="/Global Pool Portuguese.pdf"
-                            download
-                            className="flex items-center justify-between p-4 bg-gray-800/70 rounded-xl cursor-pointer
-                                       transition-all duration-300 border border-gray-700/50
-                                       hover:border-fuchsia-400 hover:shadow-[0_0_15px_rgba(216,60,255,0.4)]"
-                        >
-                            <span className="text-lg font-semibold text-gray-100">
-                                Portuguese (PT)
-                            </span>
-                            <FaFilePdf className="text-fuchsia-400 text-2xl drop-shadow-[0_0_5px_#d83cff]" />
-                        </a>
-
-                       
-                        <a
-                            href="/Global Pool  Spanish.pdf"
-                            download
-                            className="flex items-center justify-between p-4 bg-gray-800/70 rounded-xl cursor-pointer
-                                       transition-all duration-300 border border-gray-700/50
-                                       hover:border-green-400 hover:shadow-[0_0_15px_rgba(0,255,120,0.4)]" 
-                        >
-                            <span className="text-lg font-semibold text-gray-100">
-                                Spanish (ES)
-                            </span>
-                            <FaFilePdf className="text-green-400 text-2xl drop-shadow-[0_0_5px_#00ff75]" />
-                        </a>
-
-                       
                         <a
                             href="/Global Pool English.pdf"
                             download
@@ -178,6 +149,59 @@ export default function Home() {
                             <FaFilePdf className="text-yellow-400 text-2xl drop-shadow-[0_0_5px_#ffeb3b]" />
                         </a>
 
+                         <a
+                            href="/Global Pool Hindi.pdf"
+                            download
+                            className="flex items-center justify-between p-4 bg-gray-800/70 rounded-xl cursor-pointer
+                                       transition-all duration-300 border border-gray-700/50
+                                       hover:border-green-700 hover:shadow-[0_0_15px_rgba(255,255,0,0.4)]" 
+                        >
+                            <span className="text-lg font-semibold text-gray-100">
+                                 Hindi (HI)
+                            </span>
+                            <FaFilePdf className="text-green-700 text-2xl drop-shadow-[0_0_5px_#047857]" />
+                        </a>
+
+                         <a
+                            href="/Global Pool Malayalam.pdf"
+                            download
+                            className="flex items-center justify-between p-4 bg-gray-800/70 rounded-xl cursor-pointer
+                                       transition-all duration-300 border border-gray-700/50
+                                       hover:border-white hover:shadow-[0_0_15px_rgba(255,255,0,0.4)]" 
+                        >
+                            <span className="text-lg font-semibold text-gray-100">
+                                 Malayalam (MY)
+                            </span>
+                            <FaFilePdf className="text-white text-2xl drop-shadow-[0_0_5px_#ffffff]" />
+                        </a>
+
+                         <a
+                            href="/Global Pool Chinese.pdf"
+                            download
+                            className="flex items-center justify-between p-4 bg-gray-800/70 rounded-xl cursor-pointer
+                                       transition-all duration-300 border border-gray-700/50
+                                       hover:border-orange-700 hover:shadow-[0_0_15px_rgba(255,255,0,0.4)]" 
+                        >
+                            <span className="text-lg font-semibold text-gray-100">
+                                 Chinese (ZH)
+                            </span>
+                            <FaFilePdf className="text-orange-700 text-2xl drop-shadow-[0_0_5px_#ea580c]" />
+                        </a>
+
+
+                        <a
+                            href="/Global Pool Portuguese.pdf"
+                            download
+                            className="flex items-center justify-between p-4 bg-gray-800/70 rounded-xl cursor-pointer
+                                       transition-all duration-300 border border-gray-700/50
+                                       hover:border-fuchsia-400 hover:shadow-[0_0_15px_rgba(216,60,255,0.4)]"
+                        >
+                            <span className="text-lg font-semibold text-gray-100">
+                                Portuguese (PT)
+                            </span>
+                            <FaFilePdf className="text-fuchsia-400 text-2xl drop-shadow-[0_0_5px_#d83cff]" />
+                        </a>
+
                         <a
                             href="/Global Pool Polish.pdf"
                             download
@@ -188,7 +212,33 @@ export default function Home() {
                             <span className="text-lg font-semibold text-gray-100">
                                 Polish (PL)
                             </span>
-                            <FaFilePdf className="text-red-400 text-2xl drop-shadow-[0_0_5px_#ffeb3b]" />
+                            <FaFilePdf className="text-red-400 text-2xl drop-shadow-[0_0_5px_#ff3b3b]" />
+                        </a>
+
+                        <a
+                            href="/Global Pool Russian.pdf"
+                            download
+                            className="flex items-center justify-between p-4 bg-gray-800/70 rounded-xl cursor-pointer
+                                       transition-all duration-300 border border-gray-700/50
+                                       hover:border-blue-400 hover:shadow-[0_0_15px_rgba(255,255,0,0.4)]" 
+                        >
+                            <span className="text-lg font-semibold text-gray-100">
+                                 Russian (RU)
+                            </span>
+                            <FaFilePdf className="text-blue-400 text-2xl drop-shadow-[0_0_5px_#3b82f6]" />
+                        </a>
+
+                         <a
+                            href="/Global Pool  Spanish.pdf"
+                            download
+                            className="flex items-center justify-between p-4 bg-gray-800/70 rounded-xl cursor-pointer
+                                       transition-all duration-300 border border-gray-700/50
+                                       hover:border-green-400 hover:shadow-[0_0_15px_rgba(0,255,120,0.4)]" 
+                        >
+                            <span className="text-lg font-semibold text-gray-100">
+                                Spanish (ES)
+                            </span>
+                            <FaFilePdf className="text-green-400 text-2xl drop-shadow-[0_0_5px_#00ff75]" />
                         </a>
 
                     </div>
