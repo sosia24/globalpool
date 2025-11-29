@@ -691,7 +691,7 @@ const loadTransactions = async () => {
                                                     <div className="text-right text-xs text-gray-400 mt-1">{progressPercentage.toFixed(2)}% Achieved</div>
                                                 </div>
                                                 
-                                                {!isReadyForAction && (
+                                                {isReadyForAction && (
                                                     <div className={`mt-5 p-4 rounded-lg border ${isDisabled ? "bg-gray-700 border-gray-600" : "bg-green-900/40 border-green-700/50 shadow-[0_0_15px_rgba(0,255,120,0.1)]"}`}>
                                                         <p className={`text-base font-semibold mb-3 ${isDisabled ? "text-gray-400" : "text-green-300"}`}>
                                                             {isDisabled ? "Rewards Already Claimed." : "Position Ready for Action!"}
