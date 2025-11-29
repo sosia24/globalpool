@@ -718,7 +718,7 @@ const loadTransactions = async () => {
                                                                     }
                                                                 }}
                                                                 disabled={loadingClaim || loadingReinvest || isDisabled}
-                                                                className={`flex items-center cursor-pointer gap-2 px-4 py-2 rounded-md font-semibold text-black transition-all ${loadingClaim || loadingReinvest || isDisabled ? disabledStyle : neonYellowButton}`}
+                                                                className={`flex items-center cursor-pointer gap-2 px-4 py-2 rounded-md font-semibold text-black transition-all ${loadingClaim || loadingReinvest || isDisabled ? disabledStyle : neonGreenButton}`}
                                                             >
                                                                 {loadingClaim ? <Loader2 className="animate-spin w-4 h-4" /> : <HandCoins className="w-4 h-4"/>} Claim
                                                             </motion.button>
