@@ -759,6 +759,7 @@ const loadTransactions = async () => {
                                         ) : (
                                             <p className="text-sm text-gray-500 mt-2">Tick data not available. Position might be closed or invalid.</p>
                                         )}
+                                        {/* 
                                             <motion.button
                                     onClick={async () => {
                                         setLoadingClaim(true);
@@ -788,9 +789,10 @@ const loadTransactions = async () => {
                                             : "bg-orange-500 hover:bg-orange-400" // Cor Laranja ativa
                                     }`}
                                 >
-                                    {/* TEXTO DO BOTÃO MODIFICADO */}
+                                   
                                     {loadingClaim ? <Loader2 className="animate-spin w-4 h-4 inline mr-2" /> : "Remove Liquidity"}
                                 </motion.button>
+                                */}
                                     </div>
                                 );
                             })}
