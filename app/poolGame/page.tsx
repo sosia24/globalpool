@@ -414,7 +414,7 @@ const loadTransactions = async () => {
     // Estilos de Neon para botões
     const neonPurpleButton = "bg-fuchsia-600 text-white hover:bg-fuchsia-500 shadow-[0_0_15px_rgba(216,60,255,0.4)]";
     const neonGreenButton = "bg-green-500 text-black hover:bg-green-400 shadow-[0_0_15px_rgba(0,255,120,0.4)]";
-    const neonYellowButton = "bg-yellow-400 text-black hover:bg-yellow-300 shadow-[0_0_10px_rgba(255,255,0,0.4)]";
+    /*const neonYellowButton = "bg-yellow-400 text-black hover:bg-yellow-300 shadow-[0_0_10px_rgba(255,255,0,0.4)]";*/
     const neonCyanButton = "bg-cyan-600 hover:bg-cyan-500 text-white shadow-[0_0_10px_rgba(0,255,255,0.4)]";
     const disabledStyle = "bg-gray-700 text-gray-400 cursor-not-allowed shadow-none";
     const totalCost = ((parseInt(inputValue || "0", 10) || 0) * shareValue).toFixed(2);
