@@ -5,10 +5,8 @@ import { isRegistered, registerUser } from "@/services/Web3Services";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "./LanguageManager";
 
 export default function RegisterModal() {
-  const { t } = useLanguage();
   const searchParams = useSearchParams();
   const referralAddressFromUrl = searchParams.get("ref");
   const { address: walletAddress } = useWallet();
@@ -37,7 +35,7 @@ export default function RegisterModal() {
 
   const handleRegisterSponsor = async () => {
     if (!referralAddress.trim()) {
-      setError(t.networkRegisterModal.errorEmpty);
+      setError("Referral address cannot be empty.");
       return;
     }
 
@@ -48,7 +46,7 @@ export default function RegisterModal() {
     try {
       await registerUser(referralAddress);
 
-      setAlert(t.networkRegisterModal.success);
+      setAlert("Registration successful!");
 
       if (walletAddress) {
         const check = await isRegistered(walletAddress);
@@ -60,7 +58,7 @@ export default function RegisterModal() {
       }
     } catch (err) {
       console.error(err);
-      setError(t.networkRegisterModal.errorFail);
+      setError("Failed to register. Please try again.");
     } finally {
       setLoading(false);
     }

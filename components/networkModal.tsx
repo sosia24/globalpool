@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { fetchReferralNode } from "@/services/Web3Services";
 import { IoMdArrowDropdown, IoMdArrowDropright } from "react-icons/io";
-import { useLanguage } from "./LanguageManager";
 
 interface ReferralNodeType {
   address: string | null;
@@ -41,7 +40,6 @@ const ReferralNode: React.FC<ReferralNodeProps> = ({
   level = 0,
   onAddAffiliates,
 }) => {
-  const { t } = useLanguage();
   const [isExpanded, setIsExpanded] = useState(false);
   const [children, setChildren] = useState<ReferralNodeType[] | null>(
     node.children || null
@@ -91,7 +89,7 @@ const ReferralNode: React.FC<ReferralNodeProps> = ({
           <span className="truncate text-gray-100 flex-1 min-w-0 text-sm sm:text-base font-mono">
             {node.address
               ? `${node.address.slice(0, 6)}...${node.address.slice(-4)}`
-              : t.networkTreePage.noAddress}
+              : "No address available"}
           </span>
 
           <div className="bg-purple-400 text-sm text-gray-900 px-3 py-1 rounded-full ml-2 flex items-center font-bold hover:bg-purple-300 transition-colors duration-200">
