@@ -22,6 +22,7 @@ import {
     fetchSponsor,
     fetchUserTable,
     wethgetTransactionsReceivedGas,
+    getEarns,
 } from "@/services/Web3Services";
 import { useWallet } from "@/services/walletContext";
 const contractAddress = process.env.NEXT_PUBLIC_MPOOLCASH_ADDRESS || ""; 
@@ -95,6 +96,7 @@ export default function App() {
   }/?ref=${address}`;
     const [copied, setCopied] = useState(false);
     const [sharesBought, setSharesBought] = useState(0);
+        const [earns, setEarns] = useState<number>(0);
     const [inputQuantity, setInputQuantity] = useState(1);
     const [inputValue, setInputValue] = useState(String(1));
     const [loading, setLoading] = useState(false);
@@ -135,7 +137,16 @@ const [sponsor, setSponsor] = useState<string | null>(null);
         }
     });
 
-    
+        async function getFrontEarns(){
+        try {
+            if(address){
+                const earns = await getEarns(address);
+                setEarns(earns);
+            }
+        }catch (error) {
+            console.error("Failed to fetch earns:", error);
+        }
+    }
 
 const loadTransactions = async () => {
     console.log("chamou load transactions");
@@ -209,13 +220,12 @@ const loadTransactions = async () => {
         };
 
         getUserSponsor();
-
         loadData();
     }, [address]);
 
 
       useEffect(() => {
-
+    getFrontEarns();
     loadTransactions();
 
   }, [address, currentToBlock]);
@@ -925,6 +935,19 @@ const loadTransactions = async () => {
                 Pool Activity (USDT)
             </h1>
             <FaMoneyBillTransfer className="text-purple-500 text-2xl" />
+        </div>
+        <div className="text-center py-3 px-6 bg-gray-900 border-b border-gray-700">
+            <p className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-1">
+                Network Earns
+            </p>
+            <div className="flex justify-center items-baseline gap-2">
+                <span className="text-4xl font-extrabold font-mono tracking-tight text-purple-300">
+                    {earns.toFixed(2)}
+                </span>
+                <span className="text-lg font-bold text-green-400">
+                    USDT
+                </span>
+            </div>
         </div>
 
         {/* Lista de Transações: Scrollbar com thumb roxo */}
