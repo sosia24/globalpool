@@ -27,7 +27,6 @@ import { useWallet } from "@/services/walletContext";
 const contractAddress = process.env.NEXT_PUBLIC_MPOOLCASH_ADDRESS || ""; 
 import { ExternalLink, Loader2, DollarSign, Users, ShoppingCart, Rocket, Hash, RefreshCcw, HandCoins } from "lucide-react"; // Ícones atualizados
 import { useRouter } from "next/navigation";
-import { useLanguage } from "@/components/LanguageManager";
 import Decimal from "decimal.js";
 import Image from "next/image";
 import ReferralTree from "@/components/networkModal";
@@ -87,7 +86,6 @@ interface Transaction {
 export default function App() {
     const shareValue = 10;
     const { address, setAddress } = useWallet();
-    const { t } = useLanguage();
             const ARRAY_15_BOOLEAN = Array(15).fill(false);
         const ARRAY_15_NUMBER = Array(15).fill(0);
         const ARRAY_15_BIGINT = Array(15).fill(0n);
@@ -913,7 +911,7 @@ const loadTransactions = async () => {
 
     {address ? <ReferralTree address={address} /> : (
         <p className="text-center text-gray-500">
-            {t.networkEarningsPage.connectWalletPrompt}
+            Connect Wallet
         </p>
     )}
 </div>
